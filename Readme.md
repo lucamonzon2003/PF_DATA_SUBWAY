@@ -206,11 +206,11 @@ Al final Se decide que se va trabajar con las variables `Volumen de Clientes`, `
 
 Hicimos uso del método del codo, también conocido como método de la suma de los cuadrados dentro del cluster (SSC), es importante en la clusterización porque ayuda a seleccionar el número óptimo de clusters, evita el sobreajuste, facilita la interpretación de los resultados y mejora la eficacia del modelo de clustering.
 
-![alt text](image\Readme\image-2.png)
+![image-2](image\Readme\image-2.png)
 
 #### Resultados y Análisis
 
-![alt text](image\Readme\image-3.png)
+![image-3t](image\Readme\image-3.png)
 
 Luego de la clusterización con `K-Means` se pueden observar claramente 4 grupos bien diferenciados.
 
