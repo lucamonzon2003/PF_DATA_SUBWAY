@@ -112,6 +112,8 @@ EL archivo local se encuentra en la carpeta "Dashboard".
 
 ## Modelo de Machine Learning
 
+### Modelo de Aprendizaje Supervisado
+
 Se puede consultar la información entregada por el modelo en el siguiente enlace: [Streamlit](https://ptf-data-subway.streamlit.app/?id=0x865681564f2dfd47:0x1f030438f1ceed23)
 
 ![1717785299679](images/Streamlit.png)
@@ -176,6 +178,97 @@ Aplicando las características
 Luego Evaluamos
 
 ![1717784820526](image/Readme/1717784820526.png)
+
+### Modelo de Clusterización
+
+#### Objetivo
+
+la clusterización de los restaurantes de Subway, proporciona una base sólida para tomar decisiones más informadas y estratégicas. Al entender mejor los diferentes segmentos de su mercado, Subway puede mejorar la satisfacción del cliente, optimizar sus operaciones y mantenerse competitiva en el mercado.
+
+#### Preprocesamiento
+
+- Se busca rellenar nulos de en las caracteristicas de los restaurantes en base a las palabras mas frecuentes en las reseñas de los mismo.
+- Se crea la columna `Puntaje` en base a la cantidad de caracteristicas para agruparlos en diferentes categorías (por ejemplo, alto, medio y bajo puntaje)
+
+#### Exploración de Variables y Algoritmos de Clustering
+
+Probamos tratar diversa cantidad de variables, reductores de dimensionalidad y Algoritmos de Clustering a continuación dejo una lista:
+
+* Variables: Desde variables de posición, turisticas, cantidad de reseñas, satisfaciòn de cliente, categorias, accesibilidad, ambiente, etc.
+
+* Reductores de Dimensionalidad: Probamos con ``PCA`` (Análisis de Componentes Principales) y con ``t-SNE`` (t-distributed Stochastic Neighbor Embedding)
+
+* Algoritmos de Clustering: Trabajamos con ``K-Means``, ``DBSCAN`` (Density-Based Spatial Clustering of Applications with Noise) y ``Agglomerative Hierarchical Clustering``
+
+Al final Se decide que se va trabajar con las variables `Volumen de Clientes`, `Satisfacción del cliente` y `Atributos de los Restaurantes`, Sin reductores de dimensionalidades puesto que son pocas las variables y nos decidimos por el algoritmo de clusterización de `K-Means` debido a su eficiencia, su fácilidad de interpretar y escalabilidad.
+
+#### Métricas de Evaluación
+
+Hicimos uso del método del codo, también conocido como método de la suma de los cuadrados dentro del cluster (SSC), es importante en la clusterización porque ayuda a seleccionar el número óptimo de clusters, evita el sobreajuste, facilita la interpretación de los resultados y mejora la eficacia del modelo de clustering.
+
+![alt text](image\Readme\image-2.png)
+
+#### Resultados y Análisis
+
+![alt text](image\Readme\image-3.png)
+
+Luego de la clusterización con `K-Means` se pueden observar claramente 4 grupos bien diferenciados.
+
+***Conclusión General Detallada***
+
+A continuación se presenta una conclusión más detallada basada en el análisis de los cuatro grupos de restaurantes:
+
+- Grupo 1
+
+*Desempeño Destacado*
+
+Destaca en casi todas las categorías con puntajes altos en servicios, accesibilidad, comodidades, tipos de clientes, tipos de comidas, seguridad e higiene, opciones del menú, y opciones de pago. También tiene el mayor volumen de clientes y la calificación promedio más alta. Este grupo parece ser el mejor en términos generales.
+
+Recomendaciones: Mantener y seguir mejorando en todas estas áreas clave. El enfoque podría estar en mantener la calidad y gestionar el alto volumen de clientes para asegurar una experiencia consistente.
+
+- Grupo 3
+
+*Alto Desempeño*
+
+Aunque no supera al grupo 1 en la mayoría de las categorías, mantiene puntajes altos en servicios, accesibilidad, comodidades, tipos de clientes, tipos de comidas, opciones del menú, y opciones de pago. También tiene un volumen de clientes significativo y una alta calificación promedio. Este grupo es también muy fuerte, aunque no tan sobresaliente como el grupo 1.
+
+Recomendaciones: Continuar enfocados en mantener la calidad del servicio y explorar áreas de mejora en comodidades y salud para competir aún más fuertemente con el grupo 1.
+
+- Grupo 0
+
+*Desempeño Intermedio*
+
+Tiene un desempeño intermedio, con puntajes moderados en servicios, comodidades, tipos de clientes, tipos de comidas, opciones del menú, y opciones de pago. El volumen de clientes es menor comparado con los grupos 1 y 3, y su calificación promedio es más baja que la de estos grupos.
+
+Recomendaciones: Priorizar mejoras en accesibilidad, seguridad e higiene, y comodidades. También es vital explorar formas de aumentar el volumen de clientes y mejorar la satisfacción general del cliente.
+
+- Grupo 2
+
+*Desempeño Bajo*
+
+Consistentemente tiene los puntajes más bajos en todas las categorías analizadas. Tiene el volumen de clientes más bajo y una calificación promedio más baja, indicando que este grupo es el menos destacado.
+
+Recomendaciones: Urge una revisión exhaustiva de todas las áreas. Se debe priorizar la mejora en servicios, accesibilidad, comodidades, opciones de menú, y seguridad e higiene. También es crucial aumentar el volumen de clientes y mejorar la satisfacción del cliente para evitar perder competitividad.
+Conclusión Global
+
+**Fortalezas de los Grupos 1 y 3:**
+
+    Ambos grupos destacan en la mayoría de las categorías, con altas calificaciones y volumen de clientes.
+    Estos grupos deben continuar manteniendo sus altos estándares y enfocarse en pequeñas mejoras para consolidar su posición de liderazgo.
+
+**Áreas de Mejora para los Grupos 0 y 2:**
+
+    Grupo 0: Aunque tiene un desempeño intermedio, necesita mejorar en accesibilidad, seguridad, higiene, y comodidades para incrementar su volumen de clientes y calificación promedio.
+    Grupo 2: Requiere una transformación completa, enfocándose en todas las áreas clave para volverse competitivo.
+
+##### Recomendaciones Generales:
+
+    Análisis Continuo: Implementar un sistema de retroalimentación constante para identificar áreas de mejora y actuar rápidamente.
+    Capacitación del Personal: Aumentar la capacitación en servicio al cliente, seguridad, y operaciones para mejorar los puntajes.
+    Estrategias de Marketing: Desarrollar estrategias de marketing enfocadas para atraer más clientes, especialmente para los grupos 0 y 2.
+    Inversiones en Infraestructura: Invertir en mejoras de infraestructura para aumentar las comodidades y accesibilidad, especialmente en los grupos con puntajes más bajos en estas áreas.
+
+Este análisis detallado proporciona una hoja de ruta para que cada grupo de restaurantes entienda sus fortalezas y debilidades, permitiéndoles tomar decisiones estratégicas informadas para mejorar su desempeño y competitividad en el mercado.
 
 ## Contribuciones y Colaboraciones
 
